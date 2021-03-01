@@ -7,46 +7,30 @@
  import React, { useEffect, useState } from 'react';
 import Amplify, { Auth, Hub } from 'aws-amplify';
 
- Amplify.configure({
-   Auth: {
-    identityPoolId: "us-west-2:b0c9356b-bae3-4d6a-b4a2-f35d4c7b3213",
-    region: "us-west-2",
-    userPoolId: "us-west-2_S3wS3XYKw",
-    userPoolWebClientId: "6qh43usas4npbgkkg8k1fc09oh",
-    oauth: {
-      domain: "orcidintegrationtest.auth.us-west-2.amazoncognito.com",
-      scope: ["openid"],
-      redirectSignIn: "https://developers.google.com/oauthplayground",
-      redirectSignOut: "http://localhost:3000",
-      responseType: "code"
-    }
-   }
-  });
-
   Amplify.configure({
     Auth: {
 
-        // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
-        identityPoolId: 'XX-XXXX-X:XXXXXXXX-XXXX-1234-abcd-1234567890ab',
+      // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
+      identityPoolId: 'XX-XXXX-X:XXXXXXXX-XXXX-1234-abcd-1234567890ab',
 
-        // REQUIRED - Amazon Cognito Region
-        region: 'XX-XXXX-X',
+      // REQUIRED - Amazon Cognito Region
+      region: 'XX-XXXX-X',
 
-        // OPTIONAL - Amazon Cognito User Pool ID
-        userPoolId: 'XX-XXXX-X_abcd1234',
+      // OPTIONAL - Amazon Cognito User Pool ID
+      userPoolId: 'XX-XXXX-X_abcd1234',
 
-        // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
-        userPoolWebClientId: 'a1b2c3d4e5f6g7h8i9j0k1l2m3',
+      // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+      userPoolWebClientId: 'a1b2c3d4e5f6g7h8i9j0k1l2m3',
 
-         // OPTIONAL - Hosted UI configuration
-        oauth: {
-            domain: 'your_cognito_domain',
-            scope: ['openid'],
-            redirectSignIn: 'SIGN IN URL(THE SAME ONE CONFIGURED ON ORCID)',
-            redirectSignOut: 'SIGN OUT URL',
-            responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
-        }
-    }
+       // OPTIONAL - Hosted UI configuration
+      oauth: {
+          domain: 'your_cognito_domain',
+          scope: ['openid'],
+          redirectSignIn: 'SIGN IN URL(THE SAME ONE CONFIGURED ON ORCID)',
+          redirectSignOut: 'SIGN OUT URL',
+          responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
+      }
+  }
 });
 
   function App() {
@@ -84,7 +68,7 @@ import Amplify, { Auth, Hub } from 'aws-amplify';
         {user ? (
           <button onClick={() => Auth.signOut()}>Sign Out</button>
         ) : (
-          <button onClick={() => Auth.federatedSignIn({provider: 'orcid_ipd'})}>Federated Sign In</button>
+          <button onClick={() => Auth.federatedSignIn({provider: '<IDP Name>'})}>Federated Sign In</button>
         )}
       </div>
     );
