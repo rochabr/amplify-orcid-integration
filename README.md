@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Initial setup
 
+### Amplify
+
 In the project directory, run:
 
 ```
@@ -29,15 +31,17 @@ https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 ? Please choose the profile you want to use default
 ```
 
+### Cognito
+
+Open the AWS console and navigate to Cognito, then follow [this guide](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-oidc-idp.html) to configure OIDC Identity Providers to a User Pool.
+
 ### Test
 
+From the terminal, run:
 ```
 npm start
 ```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
