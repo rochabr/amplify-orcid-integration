@@ -24,7 +24,7 @@ import Amplify, { Auth, Hub } from 'aws-amplify';
 
        // OPTIONAL - Hosted UI configuration
       oauth: {
-          domain: 'your_cognito_domain',
+          domain: 'your_cognito_domain_without_http://',
           scope: ['openid'],
           redirectSignIn: 'SIGN IN URL(THE SAME ONE CONFIGURED ON ORCID)',
           redirectSignOut: 'SIGN OUT URL',
@@ -68,7 +68,7 @@ import Amplify, { Auth, Hub } from 'aws-amplify';
         {user ? (
           <button onClick={() => Auth.signOut()}>Sign Out</button>
         ) : (
-          <button onClick={() => Auth.federatedSignIn({provider: '<IDP Name>'})}>Federated Sign In</button>
+          <button onClick={() => Auth.federatedSignIn({provider: '<IDP Name from cognito>'})}>Federated Sign In</button>
         )}
       </div>
     );
